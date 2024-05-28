@@ -1,5 +1,7 @@
 # Breach Monitor
 
+https://github.com/TheRealAlexV/breach_monitor
+
 ## Overview
 Breach Monitor is a Python script designed to check if an email address, IP, domain, hostname, or name has been found in any data breaches or compromises. It uses multiple public APIs and stores every finding in a MySQL database as well as in Elasticsearch. A daily report of findings is generated and sent via email.
 
