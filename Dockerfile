@@ -15,7 +15,7 @@ COPY . .
 EXPOSE 80
 
 # Define environment variable
-ENV NAME World
+ENV NAME breach_monitor
 
 # Run breach_monitor.py when the container launches
 CMD ["python", "./breach_monitor.py"]
