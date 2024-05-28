@@ -1,0 +1,31 @@
+version: '3'
+services:
+  breach_monitor:
+    build: .
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - MYSQL_HOST=mysql_host
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=password
+      - MYSQL_DB=breaches
+      - ES_HOST=elasticsearch_host
+      - SMTP_HOST=smtp.example.com
+      - SMTP_PORT=587
+      - SMTP_USER=user@example.com
+      - SMTP_PASSWORD=password
+      - NETBOX_API_URL=https://netbox.example.com/api/
+      - NETBOX_API_KEY=netbox_api_key
+      - HIBP_API_KEY=hibp_api_key
+    depends_on:
+      - db
+      - elasticsearch
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: breaches
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.3
+    environment:
+      - discovery.type=single-node
